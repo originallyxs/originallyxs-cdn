@@ -1,1 +1,226 @@
-Just our CDN. Not able to post.
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+  <title>
+    CDN - 初源联盟工作室
+  </title>
+  <script src="https://cdn.originallyxs.cc.cd/tailwind.js">
+  </script>
+  <link rel="shortcut icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    @font-face {   
+      font-family: 'CurrentFont';   
+      src: url('https://cdn.originallyxs.cc.cd/defaultfont/defaultFont-Regular.woff2') format('woff2');   
+      font-weight: normal;   
+      font-style: normal;   
+      font-display: swap;   
+    }   
+    @font-face {   
+      font-family: 'SerifFont';   
+      src: url('https://cdn.originallyxs.cc.cd/defaultfont/defaultFont-Bold.woff2') format('woff2');   
+      font-weight: normal;   
+      font-style: normal;   
+      font-display: swap;   
+    }   
+    @font-face {   
+      font-family: 'CodeFont';   
+      src: url('./fonts/codeFont.woff2') format('woff2');   
+      font-weight: normal;   
+      font-style: normal;   
+      font-display: swap;   
+    }   
+    @font-face {   
+      font-family: 'CodeFontItalic';   
+      src: url('./fonts/codeFontItalic.woff2') format('woff2');   
+      font-weight: normal;   
+      font-style: normal;   
+      font-display: swap;   
+    }   
+    * {   
+      font-family: 'CurrentFont', sans-serif !important;   
+    }   
+    html, body {   
+      overflow: hidden;   
+      touch-action: none;   
+      height: 100%;   
+      margin: 0;   
+      background-size: cover;   
+      background-position: center;   
+      background-attachment: fixed;   
+      min-height: 100vh;   
+    }   
+    .serif, blockquote,h1,h2,h3,h4,h5,h6 {   
+      font-family: 'SerifFont', serif !important;   
+    }   
+    code, pre {   
+      font-family: 'CodeFont', monospace !important;   
+      font-style: normal !important;   
+    }   
+    code em, code i, pre em, pre i {   
+      font-family: 'CodeFontItalic', monospace !important;   
+      font-style: normal !important;   
+    }   
+    #loading-mask {   
+      position: fixed;   
+      inset: 0;   
+      z-index: 9999;   
+      display: flex;   
+      flex-direction: column; 
+      align-items: center;   
+      justify-content: center;   
+      transition: opacity 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);   
+      background: #c5cae9;   
+    }   
+    @media (prefers-color-scheme: dark) {   
+      #loading-mask {   
+        background: #1a237e;   
+      }   
+    }   
+    .loading-spinner {   
+      width: 40px;   
+      height: 40px;   
+      border: 3px solid #9fa8da;   
+      border-top-color: #283593;   
+      border-radius: 50%;   
+      animation: spin 0.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;   
+    } 
+    .loading-footer { 
+      position: absolute; 
+      bottom: 40px; 
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 340px; 
+      opacity: 0; 
+      transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1); 
+    } 
+    .loading-footer.show { 
+      opacity: 1; 
+    } 
+    @keyframes spin {   
+      to { transform: rotate(360deg); }   
+    }   
+    #loading-mask.fade-out {   
+      opacity: 0;   
+      pointer-events: none;   
+    }
+    /* 全局a标签hover/active颜色 */
+    a {
+      transition: color 0.2s ease;
+    }
+    a:hover {
+      color: #5C6BC0 !important; /* indigo‑400 */
+    }
+    a:active {
+      color: #3949AB !important; /* indigo‑600 */
+    }
+  </style>
+</head>
+<body oncontextmenu="return false;" class="bg-[url('https://cdn.originallyxs.cc.cd/bg/light.jpg')] dark:bg-[url('https://cdn.originallyxs.cc.cd/bg/dark.jpg')] text-gray-900 dark:text-white flex items-center justify-center p-4">
+<noscript><title>请先启用 JavaScript 再访问此页面。</title><h1 style="text-align:center;">初源联盟工作室</h1><h2 style="text-align:center">本页面依赖 JavaScript 运行，请启用或更换浏览器。</h2></noscript>
+  <div id="loading-mask">
+    <div class="loading-spinner">
+    </div>
+    <div class="loading-footer" id="loadingFooter">
+      <img src="./pictures/index/light_footer.png" class="block dark:hidden w-full h-auto" onload="checkFooterImageLoaded()" alt="首次加载可能较慢，请耐心等待" />
+      <img src="./pictures/index/dark_footer.png" class="hidden dark:block w-full h-auto" onload="checkFooterImageLoaded()" alt="首次加载可能较慢，请耐心等待" />
+    </div>
+  </div>
+  <!-- 修改后的头部导航栏 -->
+  <header class="fixed top-0 left-0 right-0 rounded-[12px] backdrop-blur-[6px] bg-white/40 dark:bg-black/40 px-6 py-4 shadow-sm z-20">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <h1 class="text-[clamp(1.2rem,3vw,1.8rem)] font-medium serif text-gray-900 dark:text-white">
+        初源联盟工作室|CDN
+      </h1>
+      <nav class="flex gap-6">
+        <a href="https://originallyxs.cc.cd" class="text-gray-900 dark:text-white">回主站</a>
+        <a href="https://docs.originallyxs.cc.cd" class="text-gray-900 dark:text-white">文档</a>
+        <a href="https://play.originallyxs.cc.cd" class="text-gray-900 dark:text-white">游玩</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="rounded-[12px] backdrop-blur-[6px] bg-white/40 dark:bg-black/40 px-10 py-8 shadow-xl flex flex-col items-center gap-6 mt-[60px]">
+    <h2 class="text-[clamp(1.5rem,4vw,2.2rem)] font-medium text-center">
+      Ore CDN
+    </h2>
+    <div class="text-center">
+      <p class="text-lg text-red-600 dark:text-red-400 font-medium">仅支持 Get 请求，不支持 Post</p>
+    </div>
+  </div>
+
+  <!-- 左下角：编辑此页面 -->
+  <a href="https://github.com/originallyxs/originallyxs.github.io" target="_blank" class="fixed left-4 bottom-[80px] backdrop-blur-[6px] bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/50 px-3 py-2 rounded-[12px] text-sm text-gray-800 dark:text-white flex items-center gap-2 transition-all z-10 shadow-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="flex-shrink-0">
+      <title>编辑此页面</title>
+      <g id="pen_line" fill="none">
+        <path d="M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l-.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l-.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z"></path>
+        <path fill="currentColor" d="M12.138 4.538a2 2 0 0 1 2.031.328l.126.115 4.724 4.724a2 2 0 0 1 .5 1.997l-.057.16-2.365 5.913a1.999 1.999 0 0 1-1.605 1.24l-5.079.635c-.13.015-.268.034-.41.056l-.444.072-.232.042-.723.14-.495.106-.745.167-.955.228-1.552.396-.646.174a1.01 1.01 0 0 1-1.265-1.134l.034-.146.295-1.112.264-1.048.228-.955.167-.745.105-.496.141-.722.08-.457.064-.428.66-5.28a1.999 1.999 0 0 1 1.09-1.536l.151-.069zm.742 1.857L6.968 8.76l-.584 4.672-.048.396a26.886 26.886 0 0 1-.385 2.192l-.171.786 3.288-3.288a2 2 0 1 1 1.414 1.414L7.194 18.22l.392-.087.784-.165a27.455 27.455 0 0 1 1.473-.26l5.397-.676 2.365-5.912zm2.363-3.294a1 1 0 0 1 1.32-.084l.094.084 4.242 4.242a1 1 0 0 1-1.32 1.498l-.094.084-4.242-4.242a1 1 0 0 1 0-1.414"></path>
+      </g>
+    </svg>
+    编辑此页面
+  </a>
+
+  <!-- 右下角：加入我们 -->
+  <a href="https://forms.cloud.microsoft/r/B2VQSTyAZL" target="_blank" class="fixed right-4 bottom-[80px] backdrop-blur-[6px] bg-white/40 dark:bg-black/40 hover:bg-white/60 dark:hover:bg-black/50 px-3 py-2 rounded-[12px] text-sm text-gray-800 dark:text-white flex flex-row-reverse items-center gap-2 transition-all z-10 shadow-sm">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" class="flex-shrink-0">
+      <title>add_line</title>
+      <g id="add_line" fill='none'>
+        <path d='M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l-.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l-.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z'/>
+        <path fill='currentColor' d='M11 20a1 1 0 1 0 2 0v-7h7a1 1 0 1 0 0-2h-7V4a1 1 0 1 0-2 0v7H4a1 1 0 1 0 0 2h7z'/>
+      </g>
+    </svg>
+    申请加入我们
+  </a>
+
+  <footer>
+    <div class="fixed bottom-0 left-0 right-0 rounded-[12px] backdrop-blur-[6px] bg-white/50 dark:bg-black/30 py-3 text-center text-gray-800 dark:text-white text-sm">
+      <div>
+        Copyright © 2024-<script>document.write(new Date().getFullYear())</script> OriginallyX Coalition Studio.<br> All rights reserved.|<a href="https://icp.gov.moe/?keyword=20260627" target="_blank">萌ICP备20260627号</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    tailwind.config = {   
+      darkMode: 'media',   
+      theme: {
+        colors: {   
+          indigo: {
+            50: '#E8EAF6',
+            100: '#C5CAE9',
+            200: '#9FA8DA',
+            300: '#7986CB',
+            400: '#5C6BC0',
+            500: '#3F51B5',
+            600: '#3949AB',
+            700: '#303F9F',
+            800: '#283593',
+            900: '#1A237E',
+          },   
+          white: '#fff', 
+          black: '#000', 
+          transparent: 'transparent'
+        }
+      }   
+    } 
+
+    let footerImageLoaded = false; 
+    function checkFooterImageLoaded() { 
+      if(!footerImageLoaded) { 
+        footerImageLoaded = true; 
+        document.getElementById('loadingFooter').classList.add('show'); 
+      } 
+    } 
+
+    window.addEventListener('load', function () {   
+      setTimeout(() => {   
+        const mask = document.getElementById('loading-mask');   
+        mask.classList.add('fade-out');   
+        setTimeout(() => mask.remove(), 800);   
+      }, 200);   
+    });   
+
+  </script>
+</body>
+</html>
